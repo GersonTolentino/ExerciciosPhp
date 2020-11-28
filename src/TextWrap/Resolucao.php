@@ -12,7 +12,7 @@ namespace Galoa\ExerciciosPhp\TextWrap;
  * - Passou tudo, melhore a cobertura dos testes
  * - Ficou satisfeito, envie seu exercício para a gente! <3
  *
- * Boa sorte :D
+ * Boa sorte: D
  */
 class Resolucao implements TextWrapInterface {
 
@@ -24,20 +24,23 @@ class Resolucao implements TextWrapInterface {
    * testes unitários.
    */
   public function textWrap(string $texto, int $limitador): array {
-    $texto = $texto." " ;//adicionando " "(espaço) pois minha condicional trabalha com ela, caso não colocar da erro nas ultimas duas linhas
-    while(strlen($texto)!=0){//enquano possuir string dentro da variavel texto o loop ocorre
-      $fragmento=substr(ltrim($texto),0,$limitador+1);
-      if(empty(strripos($fragmento," ")) == true){
-        $texto= ltrim(substr($texto,($limitador),strlen($texto)));
+    $texto = ($texto . " ");
+    while (strlen($texto) != 0) {
+      // Fragmento da string pelo limitador.
+      $fragmento = mb_substr(ltrim($texto), 0, ($limitador + 1));
+      // Adicionado "1" para pegar até o caractere demilimado.
+      if (empty(strripos($fragmento, " ")) == TRUE) {
+        $texto = ltrim(mb_substr($texto, ($limitador), (strlen($texto))));
       }
-      else{
-        $texto = ltrim(substr($texto,(strripos($fragmento," ")),strlen($texto)));
-        $fragmento = substr((trim($fragmento)),0,(strripos($fragmento," ")));
+      else {
+        $texto = ltrim(mb_substr($texto, (strripos($fragmento, " ")), (strlen($texto))));
+        $fragmento = mb_substr((trim($fragmento)), 0, (strripos($fragmento, " ")));
       }
-      $arr[]=$fragmento;
+      $arr[] = trim($fragmento);
+
     }
     return ($arr);
-    }
- 
+
+  }
 
 }
