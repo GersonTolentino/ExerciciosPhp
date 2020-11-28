@@ -24,11 +24,11 @@ class Resolucao implements TextWrapInterface {
    * testes unitários.
    */
   public function textWrap(string $texto, int $limitador): array {
-    $texto = ($texto . " "); 
-    while (strlen($texto) != 0) { 
-      $fragmento = substr(ltrim($texto) , 0 , ($limitador + 1)); 
+    $texto = ($texto . " ");
+    while (strlen($texto) != 0) {
+      $fragmento = substr(ltrim($texto), 0 , ($limitador + 1));
       // Adicionado "1" para pegar até o caractere demilimado, cso contrário não daria certo.
-      if (empty(strripos($fragmento, " ")) == TRUE) { 
+      if (empty(strripos($fragmento, " ")) == TRUE) {
         $texto = ltrim(substr($texto, ($limitador), (strlen($texto))));
       }
       else {
@@ -38,5 +38,7 @@ class Resolucao implements TextWrapInterface {
       $arr[] = $fragmento;
     }
     return ($arr);
+    
   }
+  
 }
