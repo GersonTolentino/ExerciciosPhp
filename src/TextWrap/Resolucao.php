@@ -16,13 +16,13 @@ namespace Galoa\ExerciciosPhp\TextWrap;
  */
 class Resolucao implements TextWrapInterface {
 
-/**
- * {@inheritdoc}
- *
- * Apague o conteúdo do método abaixo e escreva sua própria implementação,
- * nós colocamos esse mock para poder rodar a análise de cobertura dos
- * testes unitários.
- */
+  /**
+   * {@inheritdoc}
+   *
+   * Apague o conteúdo do método abaixo e escreva sua própria implementação,
+   * nós colocamos esse mock para poder rodar a análise de cobertura dos
+   * testes unitários.
+   */
   public function textWrap(string $texto, int $limitador): array {
     $texto = ($texto . " ");
     while (strlen($texto) != 0) {
@@ -36,11 +36,8 @@ class Resolucao implements TextWrapInterface {
         $texto = ltrim(mb_substr($texto, (strripos($fragmento, " ")), (strlen($texto))));
         $fragmento = mb_substr((trim($fragmento)), 0, (strripos($fragmento, " ")));
       }
-      $arr[] = $fragmento;
+      $arr[] = trim($fragmento);
 
-    }
-    for ($i = 0; $i < count($arr); $i++) {
-      $arr[$i] = trim($arr[$i]);
     }
     return ($arr);
 
