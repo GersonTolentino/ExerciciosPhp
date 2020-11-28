@@ -3,13 +3,12 @@
 namespace Galoa\ExerciciosPhp\TextWrap;
 
 class Resolucao implements TextWrapInterface {
-  
   public function textWrap(string $texto, int $limitador): array {
     $texto = ($texto . " ");
     while (strlen($texto) != 0) {
-      if()
-      $fragmento = mb_substr(ltrim($texto), 0 , ($limitador + 1));
-      // Adicionado "1" para pegar até o caractere demilimado, cso contrário não daria certo.
+      // Fragmento da string pelo limitador.
+      $fragmento = mb_substr(ltrim($texto), 0, ($limitador + 1));  
+      // Adicionado "1" para pegar até o caractere demilimado.
       if (empty(strripos($fragmento, " ")) == TRUE) {
         $texto = ltrim(mb_substr($texto, ($limitador), (strlen($texto))));
       }
@@ -20,12 +19,11 @@ class Resolucao implements TextWrapInterface {
       $arr[] = $fragmento;
       
     }
-    for($i = 0; $i < count($arr); $i++) {
+    for ($i = 0; $i < count($arr); $i++) {
       $arr[$i] = trim($arr[$i]);
     }
-  
     return ($arr);
-    
+
   }
-  
+
 }
