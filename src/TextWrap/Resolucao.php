@@ -23,45 +23,21 @@ class Resolucao implements TextWrapInterface {
    * nós colocamos esse mock para poder rodar a análise de cobertura dos
    * testes unitários.
    */
-  public function textWrap(string $text, int $length): array {
-    if ($length === 8) {
-      return [
-        'Se vi',
-        'mais',
-        'longe',
-        'foi por',
-        'estar de',
-        'pé sobre',
-        'ombros',
-        'de',
-        'gigantes',
-      ];
+  public function textWrap(string $texto, int $limitador): array {
+    $texto = $texto." " ;//adicionando " "(espaço) pois minha condicional trabalha com ela, caso não colocar da erro nas ultimas duas linhas
+    while(strlen($texto)!=0){//enquano possuir string dentro da variavel texto o loop ocorre
+      $fragmento=substr(ltrim($texto),0,$limitador+1);
+      if(empty(strripos($fragmento," ")) == true){
+        $texto= ltrim(substr($texto,($limitador),strlen($texto)));
+      }
+      else{
+        $texto = ltrim(substr($texto,(strripos($fragmento," ")),strlen($texto)));
+        $fragmento = substr((trim($fragmento)),0,(strripos($fragmento," ")));
+      }
+      $arr[]=$fragmento;
     }
-    elseif ($length === 12) {
-      return [
-        'Se vi mais',
-        'longe foi',
-        'por estar de',
-        'pé sobre',
-        'ombros de',
-        'gigantes',
-      ];
+    return ($arr);
     }
-    elseif ($length === 10) {
-      // Por favor, não implemente o código desse jeito, isso é só um mock.
-      $ret = [
-        'Se vi mais',
-        'longe foi',
-        'por estar',
-        'de pé',
-        'sobre',
-      ];
-      $ret[] = 'ombros de';
-      $ret[] = 'gigantes';
-      return $ret;
-    }
-
-    return [""];
-  }
+ 
 
 }
