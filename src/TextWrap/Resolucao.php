@@ -14,17 +14,15 @@ namespace Galoa\ExerciciosPhp\TextWrap;
  *
  * Boa sorte: D
  */
-
 class Resolucao implements TextWrapInterface {
 
- /**
-  * {@inheritdoc}
-  *
-  * Apague o conteúdo do método abaixo e escreva sua própria implementação,
-  * nós colocamos esse mock para poder rodar a análise de cobertura dos
-  * testes unitários.
-  */
-
+/**
+ * {@inheritdoc}
+ *
+ * Apague o conteúdo do método abaixo e escreva sua própria implementação,
+ * nós colocamos esse mock para poder rodar a análise de cobertura dos
+ * testes unitários.
+ */
   public function textWrap(string $texto, int $limitador): array {
     $texto = ($texto . " ");
     while (strlen($texto) != 0) {
